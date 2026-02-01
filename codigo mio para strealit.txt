@@ -1,0 +1,26 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+from utils.data_processing import clean_data
+import streamlit as st
+from utils.visualization import plot_fuel_type_count,plot_price_distribution
+url = "https://raw.githubusercontent.com/anfagudelogo-tpt/datasets/refs/heads/main/car_price_dataset.csv"
+
+df=pd.read_csv(url)
+
+#print(df.head())
+df_clean=clean_data(df)
+
+print(df_clean)
+
+st.title('radiador springs')
+
+st.dataframe(df_clean.head(10))
+
+graph1= plot_price_distribution(df_clean)
+
+st.pyplot(graph1)
+
+if st.button('Generar Grafico'):
+    graph2=plot_fuel_type_count(df_clean)
+    st.pyplot(graph2)

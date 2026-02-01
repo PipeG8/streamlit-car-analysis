@@ -34,4 +34,4 @@ def clean_data(df: pd.DataFrame) -> pd.DataFrame:
 
     df.columns = df.columns.str.strip().str.lower().str.replace(" ", "_")
 
-    return df.head()
+    return df
